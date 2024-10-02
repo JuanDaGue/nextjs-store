@@ -4,6 +4,12 @@ import localFont from "next/font/local";
 import { Header } from "app/components/shared/Header/Header";
 import { Footer } from "app/components/shared/Footer";
 import 'app/sass/global.sass'
+import {Roboto} from 'next/font/google'
+
+const roboto= Roboto({
+  weight: ['100', '300' , '400' , '500' , '700'],
+  subsets: ['latin']}
+)
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -28,7 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
+      <body className={roboto.className}>
         <Header></Header>
 
         {children}
