@@ -8,8 +8,6 @@ export default function Home() {
   return (
     <div >
       <main >
-        <Hero/>
-        <Description/>
         <MainProducts/>
       </main>
     </div>
