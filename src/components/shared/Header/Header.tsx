@@ -1,7 +1,6 @@
 import styles from './Header.module.css'
 import Link from "next/link";
 export  const Header=()=>{
-    console.log('This is the Header component')
     return (
         <header>
             <nav>

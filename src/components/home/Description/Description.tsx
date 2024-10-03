@@ -32,7 +32,6 @@ export const Description =()=>{
             <div className={styles.Description__text}>
                 <h1>Description </h1>
                 <p>Future world: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque possimus eaque fugit qui quae distinctio ipsam voluptate, atque illum commodi dignissimos modi, accusamus sit, cum quam. Consequatur cumque repellendus commodi! </p>
-
             </div>
         </section>
     )

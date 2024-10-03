@@ -18,6 +18,8 @@
 
             &:hover
                 transform: scale(1.05)
+                color #ddd
+                
             & > img    
                 max-width: 100%
                 height: auto
@@ -26,22 +28,13 @@
                 font-size: 1.5em
                 margin: 10px 0
                 color: #333
+                &:hover
+                    color #ddd
 
-    // .product-description
-    //     font-size: 1em
-    //     margin: 10px 0
-    //     color: #666
+    @media (max-width: 1024px)
+    .product-list
+        grid-template-columns: repeat(2, 1fr)
 
-    // .product-vendor,
-    // .product-tags,
-    // .product-status
-    //     font-size: 0.9em
-    //     color: #555
-
-    // @media (max-width: 1024px)
-    // .product-list
-    //     grid-template-columns: repeat(2, 1fr)
-
-    // @media (max-width: 768px)
-    // .product-list
-    //     grid-template-columns: 1fr
+    @media (max-width: 768px)
+    .product-list
+        grid-template-columns: 1fr
