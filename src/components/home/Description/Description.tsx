@@ -30,8 +30,8 @@ export const Description =()=>{
                 </div>
             </button>
             <div className={styles.Description__text}>
-                <h1>Description </h1>
-                <p>Future world: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque possimus eaque fugit qui quae distinctio ipsam voluptate, atque illum commodi dignissimos modi, accusamus sit, cum quam. Consequatur cumque repellendus commodi! </p>
+                <h1>Bring the future Today! </h1>
+                <p>"Welcome to FutureAI Store - the next generation of e-commerce. Our platform harnesses the power of advanced artificial intelligence to curate personalized shopping experiences, predictive product recommendations, and seamless transactions. Discover a world where technology meets convenience, and let us redefine the way you shop."</p>
             </div>
         </section>
     )

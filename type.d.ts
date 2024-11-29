@@ -101,3 +101,12 @@ interface Image2 {
     src: string;
     variant_ids: any[];
 }
+
+type CartItem = {
+    title: string;
+    price: number;
+    quantity: number;
+    id: string;
+    image: string;
+    merchandiseId: string;
+}
