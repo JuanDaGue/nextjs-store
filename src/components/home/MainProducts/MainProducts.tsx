@@ -12,14 +12,10 @@ export const MainProducts = async ()=>{
             <h3>Main products</h3>
             <div className={styles.MainProducts__productList}>
                 {products.length > 0 ? (
-                    products.map((product:any) => (
+                    products.map((product:ProductType) => (
                         <article  key={product.id}>
                             <Image src={product.image} alt={product.title}  width={300} height={300} />
                             <h2 className={styles.productTitle}>{product.title}</h2>
-                            {/* <div className={styles.productDescription} dangerouslySetInnerHTML={{ __html: product.body_html }} />
-                            <p className={styles.productVendor}>Vendor: {product.vendor}</p>
-                            <p className={styles.productTags}>Tags: {product.tags}</p>
-                            <p className={styles.productStatus}>Status: {product.status}</p> */}
                         </article>
                     ))
                 ) : (

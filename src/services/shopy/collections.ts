@@ -10,7 +10,7 @@ export const getCollections = async () => {
             })
         })
         const { smart_collections }= await resp.json()
-        const tranfCollection = smart_collections.map((elem:any)=>{
+        const tranfCollection = smart_collections.map((elem:Collection)=>{
             return { 
                 id: elem.id,
                 title: elem.title,

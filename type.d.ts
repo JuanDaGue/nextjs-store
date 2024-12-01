@@ -110,3 +110,5 @@ type CartItem = {
     image: string;
     merchandiseId: string;
 }
+
+interface Collection { id: string; handle: string; title: string;} // Add other properties as needed
