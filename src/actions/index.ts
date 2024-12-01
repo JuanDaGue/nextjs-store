@@ -7,7 +7,6 @@ import { validateAccessToken } from "app/utils/auth/validateAccessToken"
 import { cookies } from "next/headers"
 import { createCartMutation } from "app/graphql/mutations/createCartMutation"
 
-
 export const handleCreateUser = async (formData: FormData) => {
     const formDataObject = Object.fromEntries(formData)
     delete formDataObject["password_confirmation"]
@@ -27,7 +26,7 @@ export const handleCreateUser = async (formData: FormData) => {
                 await createAccessToken(formDataObject.email as string, formDataObject.password as string);
                 redirect('/');
             } catch (error) {
-                
+                console.error('Error creating access token:', error)
             }
         }
     } catch (error) {
@@ -35,15 +34,22 @@ export const handleCreateUser = async (formData: FormData) => {
     }
 }
 
-export const handleLogin = async (formData: FormData)=>{
-    const formDataObject = Object.fromEntries(formData);
-    const accessToken= await createAccessToken(formDataObject.email as string, formDataObject.password as string);
-    if(accessToken){
-        redirect('/store')
+export const handleLogin = async (formData: FormData) => {
+    try {
+        const formDataObject = Object.fromEntries(formData);
+        const accessToken = await createAccessToken(formDataObject.email as string, formDataObject.password as string);
+        if(accessToken){
+            redirect('/store')
+        }
+
+    } catch (error) {
+        console.error('Error during login:', error)
+        redirect('/signup')
     }
 }
 
 export const handleCreateCart = async (items: CartItem[]) => {
+    try {
         const cookiesStore = cookies()
         const accesToken = cookiesStore.get('accessToken')?.value as string
     
@@ -73,4 +79,7 @@ export const handleCreateCart = async (items: CartItem[]) => {
         } = await graphqlClient.request(createCartMutation, variables)
     
         return cartCreate?.cart?.checkoutUrl
+    } catch (error) {
+        console.error('Error creating cart:', error)
     }
+}

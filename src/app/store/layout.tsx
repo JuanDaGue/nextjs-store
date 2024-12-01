@@ -1,7 +1,7 @@
 import { getCollections } from "app/services/shopy/collections"
 import Link from "next/link"
 import styles from './sotreNav.module.sass'
-
+import { ChatLink } from "../../components/Store/ChatLink"
 export default async function Layout({ children }: { children: React.ReactNode }) {
     const collections = await getCollections()
 
@@ -18,6 +18,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
                 ))
                 }
             </ul>
+            <ChatLink />
             </nav>
             {children}
         </main>
