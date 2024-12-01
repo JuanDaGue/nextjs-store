@@ -1,4 +1,3 @@
-import { Description } from "app/components/home/Description";
 import { ProductView } from "app/components/product/ProductView";
 import { getProducts } from "app/services/shopy/products";
 import { redirect } from "next/navigation";

@@ -1,6 +1,3 @@
-
-import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Header } from "app/components/shared/Header/Header";
 import { Footer } from "app/components/shared/Footer";
 import 'app/sass/global.sass'

@@ -7,6 +7,27 @@ import { validateAccessToken } from "app/utils/auth/validateAccessToken"
 import { cookies } from "next/headers"
 import { createCartMutation } from "app/graphql/mutations/createCartMutation"
 
+
+interface CreateUserResponse { 
+    customerCreate: {
+        customer: { 
+            id: string;
+            name: string;
+            firstName: string;
+            email: string;
+        };
+    };
+}
+
+// Define the response type for creating a cart
+interface CreateCartResponse {
+    cartCreate?: {
+        cart?: {
+            checkoutUrl: string;
+        };
+    };
+}
+
 export const handleCreateUser = async (formData: FormData) => {
     const formDataObject = Object.fromEntries(formData)
     delete formDataObject["password_confirmation"]
@@ -19,8 +40,8 @@ export const handleCreateUser = async (formData: FormData) => {
     }
 
     try {
-        const { customerCreate } = await graphqlClient.request(createUserMutation, variables)
-        const { customerUserErrors, customer } = customerCreate
+        const { customerCreate } = await graphqlClient.request<CreateUserResponse>(createUserMutation, variables);
+        const { customer } = customerCreate
         if(customer?.firstName){
             try {
                 await createAccessToken(formDataObject.email as string, formDataObject.password as string);
