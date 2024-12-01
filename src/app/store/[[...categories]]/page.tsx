@@ -3,13 +3,6 @@ import { getCollections } from "app/services/shopy/collections"
 import { getCollection } from "app/services/shopy/collections"
 import { getProducts } from "app/services/shopy/products"
 
-// interface CategoryProps {
-//     params:{
-//         categories:string[],
-//         searchParams?:string
-//     }
-// }
-
 export default  async function category(props: CategoryProps){
     const {categories} =props.params
     const collections = await  getCollections() 

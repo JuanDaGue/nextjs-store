@@ -19,15 +19,6 @@ interface CreateUserResponse {
     };
 }
 
-// Define the response type for creating a cart
-interface CreateCartResponse {
-    cartCreate?: {
-        cart?: {
-            checkoutUrl: string;
-        };
-    };
-}
-
 export const handleCreateUser = async (formData: FormData) => {
     const formDataObject = Object.fromEntries(formData)
     delete formDataObject["password_confirmation"]

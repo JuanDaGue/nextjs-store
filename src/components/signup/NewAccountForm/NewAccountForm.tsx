@@ -18,7 +18,7 @@ export const NewAccountForm = () => {
             await handleCreateUser(formData);
             // Handle success (e.g., redirect, show success message)
         } catch (error) {
-            setErrors(['Error creating account. Please try again.']);
+            setErrors([`Error creating account. Please try again. ${error}`]);
         } finally {
             setLoading(false);
         }
