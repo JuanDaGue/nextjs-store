@@ -10,7 +10,7 @@ export const getProducts = async (id?: string): Promise<ProductType[]> => {
             }),
         });
         const { products } = await resp.json();
-        const transformedProducts = products.map((product: ProductType) => {
+        const transformedProducts: ProductType[] = products.map((product: ProductType) => {
             return {
                 id: product.id,
                 gql_id: product.variants[0].admin_graphql_api_id,
