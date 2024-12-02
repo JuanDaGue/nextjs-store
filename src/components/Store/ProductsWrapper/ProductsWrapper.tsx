@@ -9,6 +9,7 @@ interface Product {
     price: number;
     handle: string;
     imageUrl: { src: string }[];
+    image:string;
 }
 
 interface ProductsWrapperProps {
