@@ -1,16 +1,15 @@
-import { env } from "app/config/env"
-import { shoyfyUrl } from "./url"
-
+import { env } from "app/config/env";
+import { shoyfyUrl } from "./url";
 
 export const getProducts = async (id?: string): Promise<ProductType[]> => {
     try {
-        const apiurl = id? `${shoyfyUrl.products.all}?ids=${id}`: shoyfyUrl.products.all
-        const resp = await fetch (apiurl,{
-            headers: new Headers ({
+        const apiurl = id ? `${shoyfyUrl.products.all}?ids=${id}` : shoyfyUrl.products.all;
+        const resp = await fetch(apiurl, {
+            headers: new Headers({
                 "X-Shopify-Access-Token": env.SHOPIFY_TOKEN,
-            })
-        })
-        const { products } = await resp.json()
+            }),
+        });
+        const { products } = await resp.json();
         const transformedProducts = products.map((product: ProductType) => {
             return {
                 id: product.id,
@@ -22,11 +21,11 @@ export const getProducts = async (id?: string): Promise<ProductType[]> => {
                 quantity: product.variants[0].inventory_quantity,
                 handle: product.handle,
                 tags: product.tags,
-                }
-        })
-        return transformedProducts
-
+            };
+        });
+        return transformedProducts;
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        return [];
     }
-}
+};
