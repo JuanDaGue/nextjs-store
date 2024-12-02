@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
 
 // Create an OpenAI API client
@@ -9,28 +8,25 @@ const openai = new OpenAI({
 // Define the edge runtime
 export const runtime = 'edge';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "POST") {
-    try {
-      const { messages } = req.body; // Expecting messages from the frontend
+export async function POST(req: Request) {
+  try {
+    const { messages } = await req.json(); // Expecting messages from the frontend
 
-      // Call OpenAI API
-      const completion = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
-        messages,
-      });
+    // Call OpenAI API
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages,
+    });
 
-      // Send the response back to the client
-      res.status(200).json(completion.choices[0].message);
-    } catch (error) {
-      if (error instanceof Error) {
-        res.status(500).json({ error: error.message });
-      } else {
-        res.status(500).json({ error: "An unknown error occurred" });
-      }
-    }
-  } else {
-    res.setHeader("Allow", ["POST"]);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+    // Return the response
+    return new Response(JSON.stringify(completion.choices[0].message), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    return new Response(
+      JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }
